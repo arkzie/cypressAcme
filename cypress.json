@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://acme.iterato.rs/signin",
+  "env": {
+    "adminLogin": "anowak",
+    "adminPassword": "821dd5f6ebf162ee96913bc03f8446de",
+    "user": "jkowalski",
+    "password": "d03676cd116b76b48ab4756232949f76"
+  },
+  "projectId": "m9yx8w"
+}
