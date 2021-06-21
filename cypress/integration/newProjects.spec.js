@@ -6,6 +6,7 @@ it('Verify login acces ', () => {
     cy.get('input[name=password]').type(Cypress.env('adminPassword'))
     cy.get('button').click()
 })
+
 it('Verify add new project', () => {
     cy.get('[href="/projects"]').click()
     cy.get('button[title="Add new project"]').should('contain', 'Add New').click()
