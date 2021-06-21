@@ -2,7 +2,7 @@
 
 
 
-it('login into page', function () {
+it('Verify login access', () => {
 
     cy.visit('/')
 
@@ -22,7 +22,7 @@ it('Verify if both password are the same', () => {
     })
 })
 
-it('Verify if both passsword are not the same', () => {
+it('Verify show error "passsword are not the same"', () => {
     cy.get('.Avatar__btn').click()
     cy.get('.Avatar__dropdown > a').click()
     cy.get('input[name=oldPassword]').type('d03676cd116b76b48ab4756232949f76');
@@ -31,6 +31,6 @@ it('Verify if both passsword are not the same', () => {
     cy.get('input[name=newPassword]').invoke('val').then(samePassword => {
         cy.get('input[name=newPassword2]').should('not.have.value', samePassword)
         cy.get('[type="submit"]').click()
-        cy.get('.Error').should('contain', 'Passwords must be the same')
+        cy.get('.Error').should('contain', 'Passwords must be the same').should('be.visible')
     })
 })

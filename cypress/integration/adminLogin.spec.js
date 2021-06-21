@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-it('login into page', function () {
+it('Verify login access', () => {
 
     cy.visit('/')
 
@@ -8,34 +8,34 @@ it('login into page', function () {
     cy.get('input[name=password]').type(Cypress.env('password'));
     cy.get('button').click()
 }),
-    it('Check if user is logged and the url is correct', function () {
+    it('Verify user is logged and url is correct', () => {
         cy.get('input[name=username]').should('not.exist')
         cy.url().should('eq', 'https://acme.iterato.rs/hours')
     })
 
-it('Insert login without password', function () {
+it('Verify show error"Requied" when password is empty', () => {
     cy.visit('/')
     cy.get('input[name=username]').type('anowak');
     cy.get('input[name=password]')
     cy.get('button').click()
-    cy.get('.Error').contains('Required')
+    cy.get('.Error').contains('Required').should('be.visible')
 })
-it('Try to login without username and password', function () {
+it('Verify show error"Requied" when username and password are empty', () => {
     cy.visit('/')
 
     cy.get('input[name=username]')
     cy.get('input[name=password]')
     cy.get('button').click()
-    cy.get('form > :nth-child(1) > :nth-child(1)').contains('Required')
+    cy.get('.Error').contains('Required').should('be.visible')
 })
-it('Try to login with incorrect password', function () {
+it('Verify show error "Something went wrong" when password is incorrect', () => {
     cy.visit('/')
     cy.get('input[name=username]').type('anowak');
     cy.get('input[name=password]').type('dsadasdsa')
     cy.get('button').click()
-    cy.get('.Login__error').contains('Something went wrong')
+    cy.get('.Login__error').contains('Something went wrong').should('be.visible')
 })
-it('Check if the page is secured by htttps protocol', () => {
+it('Verify page is secured by htttps protocol', () => {
     cy.visit('/')
     cy.location('protocol').should('contains', 'https')
 })
