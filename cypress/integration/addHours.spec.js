@@ -8,8 +8,8 @@ describe('Insert data', () => {
         cy.get('button').click()
     }),
 
-        it('Verify add value to Calendar with correct valid data', () => {
-            cy.get('.Calendar__new').click()
+        it('Verify add value to Calendar with valid data', () => {
+            cy.get('.Calendar__new').first().click()
             cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
             cy.get('input[name=reportedHours]').type('8')
             cy.get('input[name=taskId]').type('1')
@@ -19,7 +19,7 @@ describe('Insert data', () => {
         })
 
     it('Verify show error "Required" when empty hours', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]')
         cy.get('input[name=taskId]').type('1')
@@ -29,7 +29,7 @@ describe('Insert data', () => {
     })
 
     it('Verify disabled save button when no data', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]')
         cy.get('input[name=taskId]')
@@ -38,7 +38,7 @@ describe('Insert data', () => {
     })
 
     it('Verify show error "Required" when empty decription', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]').type('8')
         cy.get('input[name=taskId]').type('1')
@@ -48,7 +48,7 @@ describe('Insert data', () => {
     })
 
     it('Verify show error "Should be greater than 0" when number of hours is negative', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]').type('-2')
         cy.get('input[name=taskId]').type('1')
@@ -58,7 +58,7 @@ describe('Insert data', () => {
     })
 
     it('Verify show error "Use proper format" when typed value is not a number', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]').type('osiem')
         cy.get('input[name=taskId]').type('1')
@@ -68,7 +68,7 @@ describe('Insert data', () => {
     })
 
     it('Verify show error "Should be smaller than 24" when number of hours is more than 24', () => {
-        cy.get('.Calendar__new').click()
+        cy.get('.Calendar__new').first().click()
         cy.get('select[name=projectId]').select('DRUTEX / Obsługa bieżąca').should('have.value', '5429527e-4669-495a-9264-9039488ea2ac')
         cy.get('input[name=reportedHours]').type('25')
         cy.get('input[name=taskId]').type('1')
